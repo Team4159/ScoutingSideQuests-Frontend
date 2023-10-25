@@ -123,6 +123,10 @@ module.exports = () => {
         },
         resolve: {
             extensions: [".js", ".jsx", ".ts", ".tsx"],
+            alias: {
+                "@components": path.resolve(__dirname, "src/common/components"),
+                "@utils": path.resolve(__dirname, "src/common/utils"),
+            }
         },
         plugins: [
             isProduction &&
