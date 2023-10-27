@@ -114,6 +114,7 @@ module.exports = () => {
             alias: {
                 "@components": path.resolve(__dirname, "src/common/components"),
                 "@utils": path.resolve(__dirname, "src/common/utils"),
+                "@static": path.resolve(__dirname, "src/static"),
             }
         },
         plugins: [
