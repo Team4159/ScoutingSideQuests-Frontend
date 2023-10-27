@@ -148,6 +148,7 @@ export interface Database {
           achievement: string
           approved: boolean
           created_at: string
+          description: string | null
           event: string
           season: number
           user: string
@@ -156,6 +157,7 @@ export interface Database {
           achievement: string
           approved?: boolean
           created_at?: string
+          description?: string | null
           event: string
           season: number
           user: string
@@ -164,6 +166,7 @@ export interface Database {
           achievement?: string
           approved?: boolean
           created_at?: string
+          description?: string | null
           event?: string
           season?: number
           user?: string
