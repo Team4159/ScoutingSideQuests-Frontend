@@ -74,12 +74,6 @@ module.exports = () => {
                                 sourceMap: true,
                             },
                         },
-                        {
-                            loader: "sass-loader",
-                            options: {
-                                sourceMap: true,
-                            },
-                        },
                     ],
                 },
                 {
@@ -95,12 +89,6 @@ module.exports = () => {
                         "resolve-url-loader",
                         {
                             loader: "postcss-loader",
-                            options: {
-                                sourceMap: true,
-                            },
-                        },
-                        {
-                            loader: "sass-loader",
                             options: {
                                 sourceMap: true,
                             },
