@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./main.css";
 
 const Main = () => {
@@ -7,12 +6,12 @@ const Main = () => {
             <div className="box">
                 <div className="box-login">
                     <div className="header">
-                        <h3>Side Quests</h3>
-                        <p>You must log in to access this page.</p>
+                        <h3>Team 4159 Side Quests</h3>
+                        <p>Use your hours password to sign in.</p>
                     </div>
+                    <br></br>
                     <div className="input-group">
                         <Login />
-                        <Remember />
                         <Submit />
                     </div>
                 </div>
@@ -34,32 +33,6 @@ const Input = () => {
         <div className="input">
             <input type="text" className="input-box" id="password"></input>
             <label htmlFor="password"></label>
-            <Eye />
-        </div>
-    );
-}
-
-const Eye = () => {
-    const [showPassword, setShowPassword] = useState(false);
-
-    const togglePassword = () => {
-        setShowPassword(!showPassword);
-    };
-
-    return (
-        <div className="eye">
-            <div className="eye-box" onClick={togglePassword}>
-                <i className={`fa-regular fa-eye${showPassword ? '-slash' : ''}`} />
-            </div>
-        </div>
-    );
-};
-
-const Remember = () => {
-    return (
-        <div className="remember">
-            <input type="checkbox" id="formCheck" className="check"></input>
-            <label htmlFor="formCheck">Remember Me</label>
         </div>
     );
 }

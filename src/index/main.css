@@ -30,7 +30,8 @@ div .container {
 */
 
 body{
-    background: linear-gradient(#b8abea,#907cd4,#6c4be2);
+    background: url("../images/background.png");
+    backdrop-filter: blur(2px);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -117,20 +118,13 @@ div .container{
     font-weight: 500;
 }
 
-.remember {
-    display: flex;
-    font-size: 13px;
-    margin: 12px 0 30px 0;
-    color: #000000;
-}
-
 .check{
-    margin-right: 8px;
+    margin-right: 100px;
     width: 14px;
 }
 
 .input-submit{
-    width: 100%;
+    width: 80%;
     height: 50px;
     font-size: 15px;
     font-weight: 500;
