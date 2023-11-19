@@ -11,7 +11,7 @@ const Main = () => {
                     </div>
                     <br></br>
                     <div className="input-group">
-                        <Login />
+                        <Input />
                         <Submit />
                     </div>
                 </div>
