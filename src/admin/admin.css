@@ -1,92 +1,111 @@
-#root {
-    width: 100%;
-    height: 100%;
-}
-
-html {
-    width: 100%;
-    height: 100%;
-}
-
 body {
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-button {
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
-.admin-container {
-    width: 100%;
-    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.admin-container {
+    width: 80%;
+    max-width: 1200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+}
+
 .tinder-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    height: 75%;
-    margin: 2em;
+    margin-top: 20px;
 }
 
 .info-card {
-    border: 2px solid black;
-    border-radius: 5px;
-    width: 60%;
-    padding: 1em;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    right: 20px;
+}
+
+.accept-button,
+.reject-button,
+.undo-button {
+    flex: 1;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 10px;
 }
 
 .accept-button {
-    background-color: rgb(134, 236, 127);
-    width: 15%;
-    height: 50%;
-}
-
-.undo-button {
-    background-color: rgb(205, 160, 247);
-    width: 50%;
-    height: 3em;
+    background-color: #49c675;
+    color: #fff;
 }
 
 .reject-button {
-    background-color: rgb(236, 127, 127);
-    width: 15%;
-    height: 50%;
+    background-color: #e74c3c;
+    color: #fff;
 }
 
-@media only screen and (max-width: 500px) {
-    .admin-container {
-        height: auto;
-    }
+.undo-button {
+    background-color: #afafaf;
+    color: #fff;
+}
 
-    .tinder-container {
-        width: auto;
-        height: auto;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
+/* Responsive adjustments for smaller screens */
+@media only screen and (max-width: 768px) {
+    .admin-container {
+        width: 90%;
+        margin: 10px;
     }
 
     .info-card {
-        width: auto;
+        width: 90%;
+        padding: 15px;
     }
 
-    .accept-button {
-        height: 3em;
-        width: 100%;
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+        position: static;
     }
-    .reject-button {
-        height: 3em;
+
+    .accept-button,
+    .reject-button,
+    .undo-button {
         width: 100%;
+        margin-bottom: 10px;
     }
 }
