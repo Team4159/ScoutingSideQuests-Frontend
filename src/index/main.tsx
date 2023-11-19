@@ -20,18 +20,10 @@ const Main = () => {
     );
 };
 
-const Login = () => {
-    return (
-        <div className="login">
-            <Input />
-        </div>
-    );
-}
-
 const Input = () => {
     return (
         <div className="input">
-            <input type="text" className="input-box" id="password"></input>
+            <input type="password" className="input-box" id="password"></input>
             <label htmlFor="password"></label>
         </div>
     );
