@@ -1,30 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'poppins',san;
 }
 
-body{
-    background: url("../images/background.png");
-    backdrop-filter: blur(2px);
-    background-position: center;
+body {
+    /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #2355d5, #23d5ab, #ffd500); */
+    background-color: #808080;
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+    /* background-position: center;
+    backdrop-filter: blur(10px);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    padding: 20px;
+    padding: 20px; */
+    height: 100vh;
 }
 
-div .container{
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
-.box{
+.box {
     display: flex;
     flex-direction: row;
     position: relative;
@@ -33,10 +49,11 @@ div .container{
     width: 400px;
     border-radius: 30px;
     background-color: rgba(255, 225, 225, 0.406);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    /* border: 3px solid rgba(255, 255, 255, 0.2); */
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
     overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* "borrowed" */
+    /* border: 3px solid rgba(255, 255, 255, 0.2); */
 }
 
 .box-login {
@@ -49,6 +66,7 @@ div .container{
 .header {
     text-align: center;
     margin: 30px 0;
+    margin-bottom: 20px;
 }
 
 .header h3 {
@@ -89,19 +107,14 @@ div .container{
     transition: .3s ease-in-out;
 }
 
-.input-box:focus ~ label,.input-box:valid ~ label{
+.input-box:focus ~ label,.input-box:valid ~ label {
     top: 2px;
     font-size: 10px;
     color: #c12828;
     font-weight: 500;
 }
 
-.check{
-    margin-right: 100px;
-    width: 14px;
-}
-
-.input-submit{
+.input-submit {
     width: 80%;
     height: 50px;
     font-size: 15px;
@@ -115,30 +128,13 @@ div .container{
     transition: .4s;
 }
 
-.input-submit:hover{
+.input-submit:hover {
     background:  #db3e00;
     box-shadow: 0px 4px 20px rgba(62, 9, 9, 0.32);
 }
-.eye {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-}
 
-.eye-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    
-}
-
-@media only screen and (max-width: 576px){
+@media only screen and (max-width: 576px) {
     .box{
         margin: 0 5px;
-    }
-    #btn{
-        position: absolute;
-        width: 153px;
     }
 }
