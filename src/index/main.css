@@ -10,8 +10,8 @@
 body {
     /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #2355d5, #23d5ab, #ffd500); */
     background-color: #808080;
-	background-size: 400% 400%;
-	animation: gradient 5s ease infinite;
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
     /* background-position: center;
     backdrop-filter: blur(10px);
     background-repeat: no-repeat;
@@ -33,7 +33,7 @@ body {
 	}
 }
 
-.container {
+.login-container {
     display: flex;
     justify-content: center;
     align-items: center;

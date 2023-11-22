@@ -1,8 +1,39 @@
+import React, { useState } from 'react';
 import "./main.css";
 
-const Main = () => { 
+const Main: React.FC = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const handleLogin = () => {
+        setIsLoggedIn(true);
+    };
+
     return (
-        <div className="container">
+        <div>
+            {isLoggedIn ? (
+                <AppContainer />
+            ) : (
+                <LoginContainer handleLogin={handleLogin} />
+            )}
+        </div>
+    );
+};
+
+const AppContainer: React.FC = () => {
+    return (
+        <div className="app-container">
+            <p>Test!</p>
+        </div>
+    );
+}
+
+interface SubmitProps {
+    handleLogin: () => void;
+}
+
+const LoginContainer: React.FC<{ handleLogin: () => void }> = ({ handleLogin }) => {
+    return (
+        <div className="login-container">
             <div className="box">
                 <div className="box-login">
                     <div className="header">
@@ -13,15 +44,15 @@ const Main = () => {
                     <br></br>
                     <div className="input-group">
                         <Input />
-                        <Submit />
+                        <Submit handleLogin={handleLogin} />
                     </div>
                 </div>
             </div>
         </div>
     );
-};
+}
 
-const Input = () => {
+const Input: React.FC = () => {
     return (
         <div className="input">
             <input type="password" className="input-box" id="password"></input>
@@ -30,7 +61,7 @@ const Input = () => {
     );
 }
 
-const Submit = () => {
+const Submit: React.FC<SubmitProps> = ({ handleLogin }) => {
     const doesCookieExist = (name: string) => {
         const cookies = document.cookie.split(';').map(cookie => cookie.trim());
         return cookies.some(cookie => cookie.startsWith(`${name}=`));
@@ -39,9 +70,11 @@ const Submit = () => {
     const handleData = (data: any) => {
         if (!doesCookieExist('name')) {
             document.cookie = `name=${data.name}; path=/`;
+            // handleLogin();
         } else {
             console.log("Cookie already exists"); // debug
         }
+        handleLogin();
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
