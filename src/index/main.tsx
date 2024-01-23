@@ -1,37 +1,59 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, createContext, useContext } from 'react';
 import "./main.css";
 
+const UsernameContext = createContext<{
+    username: string | null;
+    setUsername: (name: string | null) => void;
+  }>({
+    username: null,
+    setUsername: () => {},
+});
+
 const Main: React.FC = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn, ] = useState(false);
 
     const handleLogin = () => {
         setIsLoggedIn(true);
     };
 
     return (
-        <div>
-            {isLoggedIn ? (
-                <AppContainer />
-            ) : (
-                <LoginContainer handleLogin={handleLogin} />
-            )}
-        </div>
+        <UsernameContext.Provider value={{ username: null, setUsername: () => {} }}>
+            <div>
+                {isLoggedIn ? (
+                    <AppContainer />
+                ) : (
+                    <LoginContainer handleLogin={handleLogin} />
+                )}
+            </div>
+        </UsernameContext.Provider>
     );
 };
 
 const AppContainer: React.FC = () => {
+    const { username } = useContext(UsernameContext);
+    console.log('Current username:', username);
+
     return (
         <div className="app-container">
-            <p>Test!</p>
+            <div className="box-app">
+                
+            </div>
         </div>
     );
 }
 
-interface SubmitProps {
-    handleLogin: () => void;
-}
+const doesCookieExist = (name: string) => {
+    const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+    return cookies.some(cookie => cookie.startsWith(`${name}=`));
+};
 
 const LoginContainer: React.FC<{ handleLogin: () => void }> = ({ handleLogin }) => {
+    useEffect(() => {
+        if (doesCookieExist('name')) {
+            handleLogin();
+        }
+    }, [handleLogin]);
+
     return (
         <div className="login-container">
             <div className="box">
@@ -61,20 +83,22 @@ const Input: React.FC = () => {
     );
 }
 
-const Submit: React.FC<SubmitProps> = ({ handleLogin }) => {
-    const doesCookieExist = (name: string) => {
-        const cookies = document.cookie.split(';').map(cookie => cookie.trim());
-        return cookies.some(cookie => cookie.startsWith(`${name}=`));
-    };
+interface SubmitProps {
+    handleLogin: () => void;
+}
 
-    const handleData = (data: any) => {
+const Submit: React.FC<SubmitProps> = ({ handleLogin }) => {
+    const { setUsername } = useContext(UsernameContext);
+
+    const handleData = (data: any, password: any) => {
+        const name = JSON.stringify(data.name);
+
         if (!doesCookieExist('name')) {
-            document.cookie = `name=${data.name}; path=/`;
-            // handleLogin();
-        } else {
-            console.log("Cookie already exists"); // debug
+            console.log("Data: " + name + " Password: " + password);
+            document.cookie = `name=${password}; path=/`;     
+            setUsername(name);
+            handleLogin();
         }
-        handleLogin();
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -84,7 +108,7 @@ const Submit: React.FC<SubmitProps> = ({ handleLogin }) => {
         const apiUrl = `https://hours.team4159.org/users/getuserdata?password=${password}`;
         fetch(apiUrl)
             .then((response) => response.json())
-            .then((data) => handleData(data))
+            .then((data) => handleData(data, password))
             .catch((error) => console.error('Error:', error));
         passwordInput.value = '';
     };

@@ -56,6 +56,24 @@ body {
     /* border: 3px solid rgba(255, 255, 255, 0.2); */
 }
 
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.box-app {
+    display: flex;
+    flex-direction: row;
+    height: 100vh - 20px;
+    width: 100vw - 10px;
+    padding: 50px 20px 30px 10px;
+    border-radius: 30px;
+
+    /* work in progress, will likely combine various css elements soon */
+}
+
 .box-login {
     position: absolute;
     width: 85%;
